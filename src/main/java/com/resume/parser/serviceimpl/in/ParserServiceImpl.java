@@ -67,7 +67,7 @@ public class ParserServiceImpl implements ParserService {
 			responseWrapper = new ResponseWrapper();
 			responseWrapper.setStatus(200);
 			responseWrapper.setData(parsedJSON);
-			responseWrapper.setMessage("Successfully parsed Resume!!");
+			responseWrapper.setMessage("Successfully parsed Resume!");
 		}
 		return responseWrapper;
 	}
