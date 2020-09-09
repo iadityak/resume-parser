@@ -18,6 +18,11 @@ Copy the `GATEFiles` and `JAPEGrammars` dir from root dir of this repo to `/targ
 > Note: Wherever "Resume Parser.jar" is present, make sure GATEFiles and JAPEGrammars directories are also present.
 
 
+#### Run
+
+java -jar "Resume_Parser.jar"
+
+
 #### Request
 ##### Post 
 ```shell script
