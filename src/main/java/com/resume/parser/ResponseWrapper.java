@@ -1,6 +1,5 @@
 package com.resume.parser;
-
-public class ResponseWrapper {
+	public class ResponseWrapper {
 
 	private Integer status;
 	private Object data;

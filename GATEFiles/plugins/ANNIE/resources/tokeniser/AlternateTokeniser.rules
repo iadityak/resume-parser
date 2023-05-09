@@ -89,7 +89,7 @@
 "OTHER_NUMBER"+ >Token;kind=number;
 
 #whitespace#
-(SPACE_SEPARATOR) >SpaceToken;kind=space;
+(SPACE_SEPARATOR|PARAGRAPH_SEPARATOR|LINE_SEPARATOR) >SpaceToken;kind=space;
 (CONTROL) >SpaceToken;kind=control;
 
 #symbols#
