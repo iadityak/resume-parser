@@ -1,25 +1,40 @@
 package com.resume.parser.database;
 
 import javax.annotation.Generated;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
-@Entity
-public class Resume {
+public class Resume implements Serializable {
 
-    private List<Map<String, String>> summary;
-    private List<Map<String, String>> education_and_training;
-    private List<Map<String, String>> skills;
-    private Basics basics;
-    private List<WorkExperience> work_experience;
+    private List<Map<String, String>> summary = new ArrayList<>();
+    private List<Map<String, String>> education_and_training = new ArrayList<>();
+    private List<Map<String, String>> skills = new ArrayList<>();
+    private Basics basics = new Basics();
+    private List<WorkExperience> work_experience = new ArrayList<>();
+
 
     public List<Map<String, String>> getSummary() {
         return summary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Resume)) return false;
+        Resume resume = (Resume) o;
+        return Objects.equals(getSummary(), resume.getSummary()) && Objects.equals(education_and_training, resume.education_and_training) && Objects.equals(getSkills(), resume.getSkills()) && Objects.equals(getBasics(), resume.getBasics()) && Objects.equals(work_experience, resume.work_experience);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSummary(), education_and_training, getSkills(), getBasics(), work_experience);
     }
 
     public void setSummary(List<Map<String, String>> summary) {
@@ -58,12 +73,13 @@ public class Resume {
         this.work_experience = work_experience;
     }
 
-    public static class Basics {
-        private String gender;
-        private List<String> phone;
-        private Name name;
-        private String title;
-        private List<String> email;
+    public static class Basics implements Serializable{
+        private String gender = "";
+        private List<String> phone = new ArrayList<>();
+        private Name name = new Name();
+        private String title = "";
+        private List<String> email = new ArrayList<>();
+
 
         public String getGender() {
             return gender;
@@ -105,9 +121,10 @@ public class Resume {
             this.email = email;
         }
 
-        public static class Name {
-            private String first_name;
-            private String surname;
+        public static class Name implements Serializable {
+            private String first_name = "";
+            private String surname = "";
+
 
             public String getFirstName() {
                 return first_name;
@@ -127,11 +144,23 @@ public class Resume {
         }
     }
 
-    public static class WorkExperience {
-        private String date_start;
-        private String job_title;
-        private String date_end;
-        private String text;
+    public static class WorkExperience implements Serializable{
+        private String date_start = "";
+        private String job_title = "";
+        private String date_end = "";
+        private String text = "";
+
+
+        private String organization = "";
+
+
+        public String getOrganization() {
+            return organization;
+        }
+
+        public void setOrganization(String organization) {
+            this.organization = organization;
+        }
 
         public String getdate_start() {
             return date_start;
