@@ -44,9 +44,6 @@ public class ParserController {
         try {
             for (MultipartFile resume : resumes)  {
                 altParser = new AltParser(resume);
-                String skills =  altParser.parseSkills();
-                String email = altParser.parseEmails();
-                String name = altParser.parseName();
                 //ResponseWrapper responseWrapper = parserService.parseResume(resume);
                // JSONObject candidateData = (JSONObject) responseWrapper.getData();
                 //Create an instance of ObjectMapper
@@ -85,6 +82,7 @@ public class ParserController {
         newCandidate.setPhoneNumber(altParser.parseNumbers());
         newCandidate.setSkills(altParser.parseSkills());
         newCandidate.setResume(altParser.getResume());
+        newCandidate.setFileName(altParser.getFileName());
         return newCandidate;
     }
 

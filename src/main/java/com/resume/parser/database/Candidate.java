@@ -17,6 +17,17 @@ public class Candidate {
     private String phoneNumber;
     private String Name;
 
+
+    private String fileName;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
     @Column(length = 20000)
     private String skills;
 

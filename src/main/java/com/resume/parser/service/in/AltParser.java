@@ -1,10 +1,15 @@
 package com.resume.parser.service.in;
 
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.resume.parser.ResponseWrapper;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.parser.microsoft.ooxml.OOXMLParser;
 import org.apache.tika.parser.pdf.PDFParser;
@@ -49,8 +54,18 @@ public class AltParser {
     };
     private String content;
 
+    private String fileName;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
     public AltParser(MultipartFile file) throws IOException {
-        String fileName = file.getOriginalFilename();
+        fileName = file.getOriginalFilename();
         Parser parser;
         if (fileName != null && fileName.endsWith(".docx")) {
             parser = new OOXMLParser();
